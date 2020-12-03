@@ -1,54 +1,34 @@
 package day03;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class TobogganTrajectoryTest {
 
-    @Test
-    void numberOfEncounteredTrees_test1() {
+    @ParameterizedTest
+    @MethodSource("getSlopes")
+    void numberOfEncounteredTrees_test(int deltaX, int deltaY, int expected) {
         TobogganTrajectory tobogganTrajectory = new TobogganTrajectory(testInput);
 
-        int numberOfEncounteredTrees = tobogganTrajectory.numberOfEncounteredTrees(1, 1);
+        int numberOfEncounteredTrees = tobogganTrajectory.numberOfEncounteredTrees(deltaX, deltaY);
 
-        assertEquals(2, numberOfEncounteredTrees);
+        assertEquals(expected, numberOfEncounteredTrees);
     }
 
-    @Test
-    void numberOfEncounteredTrees_test2() {
-        TobogganTrajectory tobogganTrajectory = new TobogganTrajectory(testInput);
-
-        int numberOfEncounteredTrees = tobogganTrajectory.numberOfEncounteredTrees(3, 1);
-
-        assertEquals(7, numberOfEncounteredTrees);
-    }
-
-    @Test
-    void numberOfEncounteredTrees_test3() {
-        TobogganTrajectory tobogganTrajectory = new TobogganTrajectory(testInput);
-
-        int numberOfEncounteredTrees = tobogganTrajectory.numberOfEncounteredTrees(5, 1);
-
-        assertEquals(3, numberOfEncounteredTrees);
-    }
-
-    @Test
-    void numberOfEncounteredTrees_test4() {
-        TobogganTrajectory tobogganTrajectory = new TobogganTrajectory(testInput);
-
-        int numberOfEncounteredTrees = tobogganTrajectory.numberOfEncounteredTrees(7, 1);
-
-        assertEquals(4, numberOfEncounteredTrees);
-    }
-
-    @Test
-    void numberOfEncounteredTrees_test5() {
-        TobogganTrajectory tobogganTrajectory = new TobogganTrajectory(testInput);
-
-        int numberOfEncounteredTrees = tobogganTrajectory.numberOfEncounteredTrees(1, 2);
-
-        assertEquals(2, numberOfEncounteredTrees);
+    private static Stream<Arguments> getSlopes() {
+        return Stream.of(
+                Arguments.of(1, 1, 2),
+                Arguments.of(3, 1, 7),
+                Arguments.of(5, 1, 3),
+                Arguments.of(7, 1, 4),
+                Arguments.of(1, 2, 2)
+        );
     }
 
     @Test
