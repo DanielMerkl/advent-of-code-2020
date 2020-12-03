@@ -11,7 +11,7 @@ public class TobogganTrajectory {
                 .collect(Collectors.toList());
     }
 
-    public int numberOfTrees(int deltaX, int deltaY) {
+    public int numberOfEncounteredTrees(int deltaX, int deltaY) {
         int x = 0;
         int y = 0;
         int numberOfEncounteredTrees = 0;
@@ -22,22 +22,21 @@ public class TobogganTrajectory {
             if (currentChar == '#') {
                 numberOfEncounteredTrees++;
             }
-            x = (x + deltaX) % lines.get(0)
-                    .length();
+            x = (x + deltaX) % currentLine.length();
             y += deltaY;
         }
 
         return numberOfEncounteredTrees;
     }
 
-    public int secondPart() {
-        int result = 1;
+    public long secondPart() {
+        long result = 1;
 
-        result *= numberOfTrees(1, 1);
-        result *= numberOfTrees(3, 1);
-        result *= numberOfTrees(5, 1);
-        result *= numberOfTrees(7, 1);
-        result *= numberOfTrees(1, 2);
+        result *= numberOfEncounteredTrees(1, 1);
+        result *= numberOfEncounteredTrees(3, 1);
+        result *= numberOfEncounteredTrees(5, 1);
+        result *= numberOfEncounteredTrees(7, 1);
+        result *= numberOfEncounteredTrees(1, 2);
 
         return result;
     }

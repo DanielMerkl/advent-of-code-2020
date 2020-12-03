@@ -7,75 +7,75 @@ import static org.junit.jupiter.api.Assertions.*;
 class TobogganTrajectoryTest {
 
     @Test
-    void numberOfTrees_test1() {
+    void numberOfEncounteredTrees_test1() {
         TobogganTrajectory tobogganTrajectory = new TobogganTrajectory(testInput);
 
-        int numberOfTrees = tobogganTrajectory.numberOfTrees(1, 1);
+        int numberOfEncounteredTrees = tobogganTrajectory.numberOfEncounteredTrees(1, 1);
 
-        assertEquals(2, numberOfTrees);
+        assertEquals(2, numberOfEncounteredTrees);
     }
 
     @Test
-    void numberOfTrees_test2() {
+    void numberOfEncounteredTrees_test2() {
         TobogganTrajectory tobogganTrajectory = new TobogganTrajectory(testInput);
 
-        int numberOfTrees = tobogganTrajectory.numberOfTrees(3, 1);
+        int numberOfEncounteredTrees = tobogganTrajectory.numberOfEncounteredTrees(3, 1);
 
-        assertEquals(7, numberOfTrees);
+        assertEquals(7, numberOfEncounteredTrees);
     }
 
     @Test
-    void numberOfTrees_test3() {
+    void numberOfEncounteredTrees_test3() {
         TobogganTrajectory tobogganTrajectory = new TobogganTrajectory(testInput);
 
-        int numberOfTrees = tobogganTrajectory.numberOfTrees(5, 1);
+        int numberOfEncounteredTrees = tobogganTrajectory.numberOfEncounteredTrees(5, 1);
 
-        assertEquals(3, numberOfTrees);
+        assertEquals(3, numberOfEncounteredTrees);
     }
 
     @Test
-    void numberOfTrees_test4() {
+    void numberOfEncounteredTrees_test4() {
         TobogganTrajectory tobogganTrajectory = new TobogganTrajectory(testInput);
 
-        int numberOfTrees = tobogganTrajectory.numberOfTrees(7, 1);
+        int numberOfEncounteredTrees = tobogganTrajectory.numberOfEncounteredTrees(7, 1);
 
-        assertEquals(4, numberOfTrees);
+        assertEquals(4, numberOfEncounteredTrees);
     }
 
     @Test
-    void numberOfTrees_test5() {
+    void numberOfEncounteredTrees_test5() {
         TobogganTrajectory tobogganTrajectory = new TobogganTrajectory(testInput);
 
-        int numberOfTrees = tobogganTrajectory.numberOfTrees(1, 2);
+        int numberOfEncounteredTrees = tobogganTrajectory.numberOfEncounteredTrees(1, 2);
 
-        assertEquals(2, numberOfTrees);
+        assertEquals(2, numberOfEncounteredTrees);
     }
 
     @Test
-    void numberOfTrees() {
+    void numberOfEncounteredTrees() {
         TobogganTrajectory tobogganTrajectory = new TobogganTrajectory(Input.input);
 
-        int numberOfTrees = tobogganTrajectory.numberOfTrees(3, 1);
+        int numberOfEncounteredTrees = tobogganTrajectory.numberOfEncounteredTrees(3, 1);
 
-        assertEquals(198, numberOfTrees);
+        assertEquals(198, numberOfEncounteredTrees);
     }
 
     @Test
     void secondPart_test() {
         TobogganTrajectory tobogganTrajectory = new TobogganTrajectory(testInput);
 
-        int numberOfTrees = tobogganTrajectory.secondPart();
+        long numberOfEncounteredTrees = tobogganTrajectory.secondPart();
 
-        assertEquals(336, numberOfTrees);
+        assertEquals(336, numberOfEncounteredTrees);
     }
 
     @Test
     void secondPart() {
         TobogganTrajectory tobogganTrajectory = new TobogganTrajectory(Input.input);
 
-        int numberOfTrees = tobogganTrajectory.secondPart();
+        long numberOfEncounteredTrees = tobogganTrajectory.secondPart();
 
-        assertEquals(0, numberOfTrees);
+        assertEquals(5140884672L, numberOfEncounteredTrees);
     }
 
     private final String testInput = """
