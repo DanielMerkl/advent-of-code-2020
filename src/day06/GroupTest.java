@@ -66,42 +66,42 @@ class GroupTest {
     }
 
     @Test
-    void getNumberQuestionsEveryPersonAnswered_1() {
+    void getNumberOfQuestionsEveryPersonAnswered_1() {
         String input = "abc";
         Group group = new Group(input);
 
-        int result = group.getNumberQuestionsEveryPersonAnswered();
+        int result = group.getNumberOfQuestionsEveryPersonAnswered();
 
         assertEquals(3, result);
     }
 
     @Test
-    void getNumberQuestionsEveryPersonAnswered_2() {
+    void getNumberOfQuestionsEveryPersonAnswered_2() {
         String input = """
                 a
                 b
                 c""";
         Group group = new Group(input);
 
-        int result = group.getNumberQuestionsEveryPersonAnswered();
+        int result = group.getNumberOfQuestionsEveryPersonAnswered();
 
         assertEquals(0, result);
     }
 
     @Test
-    void getNumberQuestionsEveryPersonAnswered_3() {
+    void getNumberOfQuestionsEveryPersonAnswered_3() {
         String input = """
                 ab
                 ac""";
         Group group = new Group(input);
 
-        int result = group.getNumberQuestionsEveryPersonAnswered();
+        int result = group.getNumberOfQuestionsEveryPersonAnswered();
 
         assertEquals(1, result);
     }
 
     @Test
-    void getNumberQuestionsEveryPersonAnswered_4() {
+    void getNumberOfQuestionsEveryPersonAnswered_4() {
         String input = """
                 a
                 a
@@ -109,17 +109,17 @@ class GroupTest {
                 a""";
         Group group = new Group(input);
 
-        int result = group.getNumberQuestionsEveryPersonAnswered();
+        int result = group.getNumberOfQuestionsEveryPersonAnswered();
 
         assertEquals(1, result);
     }
 
     @Test
-    void getNumberQuestionsEveryPersonAnswered_5() {
+    void getNumberOfQuestionsEveryPersonAnswered_5() {
         String input = "b";
         Group group = new Group(input);
 
-        int result = group.getNumberQuestionsEveryPersonAnswered();
+        int result = group.getNumberOfQuestionsEveryPersonAnswered();
 
         assertEquals(1, result);
     }

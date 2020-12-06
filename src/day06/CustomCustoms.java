@@ -21,7 +21,7 @@ public class CustomCustoms {
 
     public int sumOfQuestionsEveryPersonAnswered() {
         return groups.stream()
-                .mapToInt(Group::getNumberQuestionsEveryPersonAnswered)
+                .mapToInt(Group::getNumberOfQuestionsEveryPersonAnswered)
                 .sum();
     }
 }
