@@ -1,6 +1,8 @@
 package day06;
 
-import java.util.*;
+import java.util.List;
+import java.util.Set;
+import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 
 public class Group {
@@ -13,33 +15,23 @@ public class Group {
     }
 
     public int getNumberOfUniqueQuestions() {
-        Set<Character> answers = new HashSet<>();
-
-        for (Person person : people) {
-            answers.addAll(person.getAnswers());
-        }
-
-        return answers.size();
+        return (int) people.stream()
+                .map(Person::getAnswers)
+                .flatMap(Set::stream)
+                .distinct()
+                .count();
     }
 
-    public int getNumberQuestionsEveryPersonAnswered() {
-        Map<Character, Integer> answerCounts = new HashMap<>();
+    public int getNumberOfQuestionsEveryPersonAnswered() {
+        BinaryOperator<Set<Character>> intersect = (set1, set2) -> {
+            set1.retainAll(set2);
+            return set1;
+        };
 
-        for (Person person : people) {
-            for (Character answer : person.getAnswers()) {
-                answerCounts.computeIfPresent(answer, (_c, count) -> count + 1);
-                answerCounts.putIfAbsent(answer, 1);
-            }
-        }
-
-        int numberQuestionsEveryPersonAnswered = 0;
-        for (Integer count : answerCounts.values()) {
-            boolean everyPersonAnsweredCurrentQuestion = count == people.size();
-            if (everyPersonAnsweredCurrentQuestion) {
-                numberQuestionsEveryPersonAnswered++;
-            }
-        }
-
-        return numberQuestionsEveryPersonAnswered;
+        return people.stream()
+                .map(Person::getAnswers)
+                .reduce(intersect)
+                .orElseThrow()
+                .size();
     }
 }
