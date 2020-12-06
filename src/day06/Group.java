@@ -34,8 +34,8 @@ public class Group {
 
         int numberQuestionsEveryPersonAnswered = 0;
         for (Integer count : answerCounts.values()) {
-            boolean everyPersonAnseredCurrentQuestion = count == people.size();
-            if (everyPersonAnseredCurrentQuestion) {
+            boolean everyPersonAnsweredCurrentQuestion = count == people.size();
+            if (everyPersonAnsweredCurrentQuestion) {
                 numberQuestionsEveryPersonAnswered++;
             }
         }
