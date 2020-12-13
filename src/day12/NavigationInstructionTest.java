@@ -30,7 +30,7 @@ class NavigationInstructionTest {
                 Arguments.of("E3", Action.MOVE_EAST, 3),
                 Arguments.of("W4", Action.MOVE_WEST, 4),
                 Arguments.of("L90", Action.TURN_LEFT, 90),
-                Arguments.of("R270", Action.TURN_Right, 270),
+                Arguments.of("R270", Action.TURN_RIGHT, 270),
                 Arguments.of("F7", Action.MOVE_FORWARD, 7)
         );
     }

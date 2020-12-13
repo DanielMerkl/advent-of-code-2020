@@ -24,7 +24,7 @@ public class RainRisk {
                 case MOVE_EAST -> ship.move(Orientation.EAST, value);
                 case MOVE_WEST -> ship.move(Orientation.WEST, value);
                 case TURN_LEFT -> ship.turnLeft(value);
-                case TURN_Right -> ship.turnRight(value);
+                case TURN_RIGHT -> ship.turnRight(value);
                 case MOVE_FORWARD -> ship.moveForward(value);
             }
         }
@@ -45,7 +45,7 @@ public class RainRisk {
                 case MOVE_EAST -> waypoint.move(Orientation.EAST, value);
                 case MOVE_WEST -> waypoint.move(Orientation.WEST, value);
                 case TURN_LEFT -> waypoint.rotateLeft(value);
-                case TURN_Right -> waypoint.rotateRight(value);
+                case TURN_RIGHT -> waypoint.rotateRight(value);
                 case MOVE_FORWARD -> ship.moveForward(value, waypoint);
             }
         }

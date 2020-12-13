@@ -12,7 +12,7 @@ public class NavigationInstruction {
             case 'E' -> Action.MOVE_EAST;
             case 'W' -> Action.MOVE_WEST;
             case 'L' -> Action.TURN_LEFT;
-            case 'R' -> Action.TURN_Right;
+            case 'R' -> Action.TURN_RIGHT;
             case 'F' -> Action.MOVE_FORWARD;
             default -> throw new IllegalArgumentException("Unexpected character: " + c);
         };

@@ -6,6 +6,6 @@ public enum Action {
     MOVE_EAST,
     MOVE_WEST,
     TURN_LEFT,
-    TURN_Right,
+    TURN_RIGHT,
     MOVE_FORWARD,
 }
