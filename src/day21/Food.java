@@ -21,4 +21,12 @@ public class Food {
     public List<String> getAllergens() {
         return allergens;
     }
+
+    public boolean containsAllergene(String allergen) {
+        return allergens.contains(allergen);
+    }
+
+    public boolean containsIngredient(String ingredient) {
+        return ingredients.contains(ingredient);
+    }
 }
