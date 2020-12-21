@@ -34,8 +34,7 @@ public class AllergenAssessment {
     private void initializeAllergensMap() {
         for (String possibleAllergen : possibleAllergens) {
             List<Food> foodWithAllergen = foods.stream()
-                    .filter(food -> food.getAllergens()
-                            .contains(possibleAllergen))
+                    .filter(food -> food.getAllergens().contains(possibleAllergen))
                     .collect(Collectors.toList());
 
             List<String> remainingIngredients = foodWithAllergen.get(0)
@@ -44,8 +43,7 @@ public class AllergenAssessment {
             for (Food food : foodWithAllergen) {
                 remainingIngredients = remainingIngredients.stream()
                         .distinct()
-                        .filter(ingredient -> food.getIngredients()
-                                .contains(ingredient))
+                        .filter(ingredient -> food.getIngredients().contains(ingredient))
                         .collect(Collectors.toList());
             }
 
