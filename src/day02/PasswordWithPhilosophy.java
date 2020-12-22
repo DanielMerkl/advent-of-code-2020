@@ -32,8 +32,4 @@ public class PasswordWithPhilosophy {
     public String getPassword() {
         return password;
     }
-
-    public Philosophy getRequirement() {
-        return philosophy;
-    }
 }
