@@ -1,11 +1,11 @@
 package day02;
 
-public class Requirement {
+public class Philosophy {
     private final int first;
     private final int second;
     private final char letter;
 
-    public Requirement(String input) {
+    public Philosophy(String input) {
         String[] split = input.split(" ");
         letter = split[1].charAt(0);
         String[] firstSecond = split[0].split("-");

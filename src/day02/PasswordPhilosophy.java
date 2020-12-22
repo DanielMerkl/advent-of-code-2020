@@ -4,23 +4,23 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PasswordPhilosophy {
-    private final List<Password> passwords;
+    private final List<PasswordWithPhilosophy> passwordWithPhilosophies;
 
     public PasswordPhilosophy(String input) {
-        passwords = input.lines()
-                .map(Password::new)
+        passwordWithPhilosophies = input.lines()
+                .map(PasswordWithPhilosophy::new)
                 .collect(Collectors.toList());
     }
 
     public int numberOfValidPasswords() {
-        return (int) passwords.stream()
-                .filter(Password::hasRequiredNumberOfOccurrences)
+        return (int) passwordWithPhilosophies.stream()
+                .filter(PasswordWithPhilosophy::hasRequiredNumberOfOccurrences)
                 .count();
     }
 
     public int numberOfValidPasswords2() {
-        return (int) passwords.stream()
-                .filter(Password::hasLettersAtRequiredPositions)
+        return (int) passwordWithPhilosophies.stream()
+                .filter(PasswordWithPhilosophy::hasLettersAtRequiredPositions)
                 .count();
     }
 }
