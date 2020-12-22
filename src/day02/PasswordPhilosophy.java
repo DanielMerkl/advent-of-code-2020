@@ -8,7 +8,7 @@ public class PasswordPhilosophy {
 
     public PasswordPhilosophy(String input) {
         passwordWithPhilosophies = input.lines()
-                .map(PasswordWithPhilosophy::new)
+                .map(PasswordWithPhilosophy::fromInput)
                 .collect(Collectors.toList());
     }
 

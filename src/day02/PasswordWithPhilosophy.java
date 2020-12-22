@@ -4,10 +4,17 @@ public class PasswordWithPhilosophy {
     private final String password;
     private final Philosophy philosophy;
 
-    public PasswordWithPhilosophy(String input) {
+    private PasswordWithPhilosophy(String password, Philosophy philosophy) {
+        this.password = password;
+        this.philosophy = philosophy;
+    }
+
+    public static PasswordWithPhilosophy fromInput(String input) {
         String[] split = input.split(": ");
-        password = split[1];
-        philosophy = new Philosophy(split[0]);
+        String password = split[1];
+        Philosophy philosophy = Philosophy.fromInput(split[0]);
+
+        return new PasswordWithPhilosophy(password, philosophy);
     }
 
     public boolean hasRequiredNumberOfOccurrences() {
