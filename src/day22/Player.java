@@ -1,17 +1,19 @@
 package day22;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 class Player {
-    private final Queue<Integer> cards;
+    private final Deque<Integer> deck;
 
-    private Player(Queue<Integer> cards) {
-        this.cards = cards;
+    private Player(Deque<Integer> deck) {
+        this.deck = deck;
     }
 
     static Player from(String input) {
-        Queue<Integer> cards = new LinkedBlockingQueue<>();
+        Deque<Integer> cards = new ArrayDeque<>();
         input.lines()
                 .filter(line -> !line.startsWith("Player"))
                 .map(Integer::parseInt)
@@ -21,28 +23,32 @@ class Player {
     }
 
     int drawCard() {
-        if (cards.isEmpty()) {
+        if (deck.isEmpty()) {
             throw new RuntimeException("Can't draw any more cards!");
         }
 
-        return cards.poll();
+        return deck.poll();
     }
 
     void takeCard(int card) {
-        cards.add(card);
+        deck.add(card);
     }
 
     boolean hasCardsRemaining() {
-        return !cards.isEmpty();
+        return !deck.isEmpty();
     }
 
     long calculateScore() {
         long score = 0;
 
-        for (int multiplier = cards.size(); multiplier >= 1; multiplier--) {
+        for (int multiplier = deck.size(); multiplier >= 1; multiplier--) {
             score += (long) drawCard() * multiplier;
         }
 
         return score;
+    }
+
+    public Deque<Integer> getDeck() {
+        return deck;
     }
 }

@@ -1,5 +1,7 @@
 package day22;
 
+import java.util.*;
+
 class CrabCombat {
     private final Player player1;
     private final Player player2;
@@ -19,7 +21,7 @@ class CrabCombat {
     }
 
     long partOne() {
-        while (!gameFinished()) {
+        while (bothPlayersHaveCardsRemaining()) {
             playRound();
         }
 
@@ -28,8 +30,8 @@ class CrabCombat {
         return winner.calculateScore();
     }
 
-    boolean gameFinished() {
-        return !player1.hasCardsRemaining() || !player2.hasCardsRemaining();
+    boolean bothPlayersHaveCardsRemaining() {
+        return player1.hasCardsRemaining() && player2.hasCardsRemaining();
     }
 
     void playRound() {
@@ -47,7 +49,75 @@ class CrabCombat {
         }
     }
 
-    public long partTwo() {
-        return 0;
+    long partTwo() {
+        Deque<Integer> deck1 = player1.getDeck();
+        Deque<Integer> deck2 = player2.getDeck();
+
+        final Deque<Integer> winner = new ArrayDeque<>();
+
+        calculateWinner(deck1, deck2, winner, deck1.size(), deck2.size());
+
+        return calculateScore(winner);
+    }
+
+    private Deque<Integer> calculateWinner(Deque<Integer> d1, Deque<Integer> d2, Deque<Integer> winner, int size1,
+                                           int size2) {
+        final Deque<Integer> deck1 = new ArrayDeque<>(d1);
+        final Deque<Integer> deck2 = new ArrayDeque<>(d2);
+
+        while (deck1.size() > size1) {
+            deck1.removeLast();
+        }
+
+        while (deck2.size() > size2) {
+            deck2.removeLast();
+        }
+
+        final Set<String> previousStates = new HashSet<>();
+        while (!deck1.isEmpty() && !deck2.isEmpty()) {
+            String currentState = "%s|%s".formatted(deck1, deck2);
+            if (previousStates.contains(currentState)) {
+                return d1;
+            }
+            previousStates.add(currentState);
+
+            int card1 = deck1.removeFirst();
+            int card2 = deck2.removeFirst();
+
+            if (deck1.size() >= card1 && deck2.size() >= card2) {
+                Deque<Integer> recursivelyWinningDeck = calculateWinner(deck1, deck2, null, card1, card2);
+                if (recursivelyWinningDeck.equals(deck1)) {
+                    deck1.addLast(card1);
+                    deck1.addLast(card2);
+                } else {
+                    deck2.addLast(card2);
+                    deck2.addLast(card1);
+                }
+            } else {
+                if (card1 > card2) {
+                    deck1.addLast(card1);
+                    deck1.addLast(card2);
+                } else {
+                    deck2.addLast(card2);
+                    deck2.addLast(card1);
+                }
+            }
+        }
+
+        if (winner != null) {
+            winner.addAll(deck2.isEmpty() ? deck1 : deck2);
+        }
+
+        return deck2.isEmpty() ? d1 : d2;
+    }
+
+    long calculateScore(Deque<Integer> cards) {
+        long score = 0;
+
+        for (long multiplier = cards.size(); multiplier >= 1; multiplier--) {
+            score += cards.removeFirst() * multiplier;
+        }
+
+        return score;
     }
 }

@@ -1,7 +1,7 @@
 package day22;
 
-public class Input {
-    public static final String input = """
+class Input {
+    static final String input = """
             Player 1:
             7
             1

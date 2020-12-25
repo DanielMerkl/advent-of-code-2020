@@ -1,6 +1,5 @@
 package day22;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,23 +25,21 @@ class CrabCombatTest {
     }
 
     @Test
-    @Disabled
     void partTwo_test() {
         CrabCombat crabCombat = CrabCombat.from(testInput);
 
         long result = crabCombat.partTwo();
 
-        assertEquals(306, result);
+        assertEquals(291, result);
     }
 
     @Test
-    @Disabled
     void partTwo() {
         CrabCombat crabCombat = CrabCombat.from(Input.input);
 
         long result = crabCombat.partTwo();
 
-        assertEquals(-1, result);
+        assertEquals(29177, result);
     }
 
     private final String testInput = """
@@ -59,5 +56,15 @@ class CrabCombatTest {
             4
             7
             10""";
+
+    private final String testInput2 = """
+            Player 1:
+            43
+            19
+                        
+            Player 2:
+            2
+            29
+            14""";
 
 }
